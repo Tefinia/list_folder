@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>List Path</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>List Path</h1>
+
+		<form method="POST" action="/path">
+			<input type="text" placeholder="Path" name="path" autofocus required>
+			<button type="submit">Afficher</button>
+		</form>
+        <% if(fichiers.length == 0) { %>
+            <p>Veuillez entrer le chemin </p>
+        <% } else { %>
+            <h3>Les Dossiers et les fichier dans ce chemin BIB</h3>
+            <p> <%= chemin %> </p>
+            <form method="POST" action="/add">
+                <input type="text" placeholder="Ajouter un dossier" name="add" autofocus required>
+                <button type="submit">Ajouter</button>
+            </form>
+
+            <ul>
+                <% fichiers.forEach((fichier) => { %>
+                    <li>
+                        <%= fichier %> 
+                            <a href="#">Modifier</a>
+                            <a href="#">Supprimer</a>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+
+	</body>
+</html>
